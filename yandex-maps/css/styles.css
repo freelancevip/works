@@ -1,0 +1,95 @@
+html, body, #map {
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+}
+* {
+	box-sizing: border-box;
+}
+.btn {
+	border-radius:8px;
+	border: 1px solid rgb(154,145,145);
+}
+.btn:hover, .btn--common:hover {
+	background:rgb(252,208,80);
+}
+.btn--common {
+	height: 30px;
+	line-height: 30px;
+	border: 1px solid rgba(107,105,109,.7);
+	background: #fff;
+	border-radius: 8px;
+	padding: 0 28px;
+	cursor:pointer;
+}
+.btn--common-selected {
+	background:rgb(252,208,80);
+	border:1px solid #000;
+}
+.ymaps-b-select_control_search .ymaps-b-search .ymaps-b-form-input {
+	width:147px;
+	border: 1px solid rgba(107,105,109,.7);
+	margin-right:8px;
+	border-radius: 8px;
+	overflow: hidden;
+	box-shadow: none;
+}
+.form-search .input-append .search-query {
+	width: 148px;
+	border-radius: 8px;
+}
+#fullScreen {
+	width: 184px;
+	position: relative;
+	padding: 0 16px;
+	text-align: center;
+	box-sizing: border-box;
+}
+#map.smallMap {
+	width: 300px !important;
+	height: 600px !important;
+}
+#map:not(.smallMap) {
+	position:fixed;
+	left:0;
+	top:0;
+	right:0;
+	bottom:0;
+	width:100%!important;
+	height:100%!important;
+}
+.draw-contur, .select-direction {
+	width:150px;
+	text-align:center;
+}
+.draw-contur {
+	margin-top: -10px;
+}
+.select-direction {
+	margin-top: -68px;
+}
+.form-search .input-append .search-query {
+	width: 150px;
+	border-radius: 8px;
+	display: inline-block;
+}
+.btn--common--search {
+	margin-left: 8px;
+	width: 75px;
+	text-align: center;
+	padding: 0;
+}
+input#typeahead {
+	border-radius: 8px;
+	padding: 0 12px;
+	height: auto;
+	line-height: 30px;
+}
+.btn-zoom {
+	width: 28px;
+	padding: 0;
+	line-height: 30px;
+	text-align: center;
+	font-size: 20px;
+}

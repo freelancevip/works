@@ -1,0 +1,15 @@
+.simple-calculator {
+	width: 600px;
+	border: 1px solid #000;
+	padding: 64px 32px;
+	box-sizing: border-box;
+}
+.simple-calculator label {
+	cursor:pointer;
+}
+.simple-calculator p {
+	padding-bottom: 32px;
+}
+.result {
+	text-align:center;
+}

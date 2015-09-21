@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<link rel="stylesheet" href="./css/simple-calculator.css">
+</head>
+<body>
+	<div id="calculator" class="simple-calculator">
+		<p>
+			<span>Формат</span>
+			<label for="size10x15"><input type="radio" id="size10x15" name="sizes[]" value="10x15" checked>10x15</label>
+			<label for="size20x20"><input type="radio" id="size20x20" name="sizes[]" value="20x20">20x20</label>
+			<label for="size20x30"><input type="radio" id="size20x30" name="sizes[]" value="20x30">20x30</label>
+		</p>
+		<p>
+			<label for="lamination">Ламинация обложки</label><input type="checkbox" id="lamination">
+		</p>
+		<p>
+			<label for="rounds">Скругление углов</label><input type="checkbox" id="rounds">
+		</p>
+		<div id="result" class="result"></div>
+	</div>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script type="text/javascript" src="./js/index.js"></script>
+</body>
+</html>
