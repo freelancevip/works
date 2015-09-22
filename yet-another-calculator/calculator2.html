@@ -22,12 +22,12 @@
 	</style>
 </head>
 <body>
-	<div id="calculator" class="simple-calculator">
+	<div id="calculator2" class="simple-calculator">
 		<p>
 			<span>Формат</span>
-			<label for="size15x20"><input type="radio" id="size15x20" name="sizes[]" value="15x20" checked>10x15</label>
-			<label for="size20x20"><input type="radio" id="size20x20" name="sizes[]" value="20x20">20x20</label>
-			<label for="size20x30"><input type="radio" id="size20x30" name="sizes[]" value="20x30">20x30</label>
+			<label for="2size15x20"><input type="radio" id="2size15x20" name="sizes[]" value="15x20" checked>10x15</label>
+			<label for="2size20x20"><input type="radio" id="2size20x20" name="sizes[]" value="20x20">20x20</label>
+			<label for="2size20x30"><input type="radio" id="2size20x30" name="sizes[]" value="20x30">20x30</label>
 		</p>
 		<p>
 			<label for="razvorot">Количечтво разворотов</label><input type="text" id="razvorot" value="1">
@@ -37,13 +37,13 @@
 			<input type="radio" id="rounds1" value="0" name="rounds[]" checked><label for="rounds1">Нет</label>
 			<input type="radio" id="rounds2" value="1" name="rounds[]"><label for="rounds2">Есть</label>
 		</p>
-		<div id="result" class="result">Стоимость 145 руб.</div>
+		<div id="result2" class="result">Стоимость 145 руб.</div>
 	</div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script type="text/javascript">
 /* Calculator options */
 var options = {
-	id: "calculator",
+	id: "calculator2",
 	currency: ' руб.',
 	beforePrice: 'Стоимость ',
 	maxRazvorotov: 3,
@@ -114,7 +114,7 @@ var options = {
 			var result = currentPrices[data.razvKey];
 			result = data.rounds ? result + currentPrices.rounds : result;
 			result = data.lamination ? result + currentPrices.lamination : result;
-			$("#result").html(options.beforePrice + result + options.currency);
+			$("#result2").html(options.beforePrice + result + options.currency);
 		},
 		init: function(options) {
 			this.options = options;
