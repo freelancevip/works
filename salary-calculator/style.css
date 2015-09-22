@@ -1,0 +1,197 @@
+* {margin:0;
+padding:0;}
+
+.salary-calculator {
+	width:650px;
+	margin:0 auto;
+	overflow:hidden;
+	background:#F9F3A0;
+	box-sizing:border-box;
+	padding:12px;
+	font-family: sans-serif;
+}
+
+.salary-calculator h3 {
+	text-transform:uppercase;
+	font-size: 14px;
+	line-height: 42px;
+}
+
+.left-block {
+	float:left;
+	width:60%;
+}
+
+.right-block {
+	float:right;
+	width:35%;
+}
+
+.salary-field {
+	padding: 20px 0 20px;
+}
+
+.result-salary, .result-hours {
+	color: red;
+	font-size: 20px;
+	text-transform: uppercase;
+}
+
+.period, .hours {
+	margin: 0 0 0 12px;
+	background: #000;
+}
+
+span.ui-slider-handle {
+	background: #ED1C24!important;
+	border: none!important;
+	width: 14px!important;
+	height: 32px!important;
+	border-radius: 10px;
+	margin-top: -5px;
+	margin-left: -7px!important;
+	cursor:pointer!important;
+	outline: none;
+}
+
+.range-period {
+	position:relative;
+	padding-bottom: 32px;
+}
+
+.salary-field__period {
+	display: block;
+	text-align: center;
+	position:absolute;
+	font-size: 16px;
+	text-transform: uppercase;
+	font-weight: bold;
+}
+
+.day:before,
+.week:before,
+.month:before,
+.year:before,
+.one_hour:before,
+.four_hours:before,
+.eight_hours:before,
+.eight_hours:before,
+.twelve_hours:before,
+.sixteen_hours:before,
+.twenty_hours:before,
+.twenty-four_hours:before
+ {
+	position: absolute;
+	content: "";
+	top: -44px;
+	width: 12px;
+	height: 30px;
+	background: #000;
+	left: 13px;
+	border-radius:10px;
+}
+
+.day {
+	left: 64px;
+}
+.day:before {
+	left: 15px;
+}
+.week {
+	left: 123px;
+}
+.week:before {
+	left: 28px;
+}
+.month {
+	left: 203px;
+}
+.month:before {
+	left: 21px;
+}
+.year {
+	left: 287px;
+}
+.year:before {
+	left: 9px;
+}
+
+.one_hour:before,
+.four_hours:before,
+.eight_hours:before,
+.eight_hours:before,
+.twelve_hours:before,
+.sixteen_hours:before,
+.twenty_hours:before,
+.twenty-four_hours:before {
+	left:0;
+}
+.one_hour {
+	left:8px;
+}
+.one_hour:before {
+	left:0px;
+}
+.four_hours {
+	left: 55px;
+}
+.eight_hours {
+	left: 117px;
+}
+.twelve_hours {
+	left: 177px;
+}
+.twelve_hours:before {
+	left: 2px;
+}
+.sixteen_hours {
+	left: 240px;
+}
+.sixteen_hours:before {
+	left: 2px;
+}
+.twenty_hours {
+	left: 303px;
+}
+.twenty_hours:before {
+	left: 2px;
+}
+.twenty-four_hours {
+	left: auto;
+	right: -8px;
+}
+.twenty-four_hours:before {
+	left: 2px;
+}
+
+.money-img {
+	position:relative;
+	height: 100px;
+}
+.money-img img {
+	position:absolute;
+}
+.currency {
+	display: inline-block;
+	padding: 8px;
+	cursor: pointer;
+	border: 1px solid transparent;
+}
+.currency.active {
+	border: 1px solid #000;
+}
+
+.money-blank {
+	height:100px;
+	width:80px;
+	position:absolute;
+}
+.money-blank.hrn {
+	background: url(100hrn.png) left top no-repeat;
+}
+.money-blank.usd {
+	background: url(100usd.png) left top no-repeat;
+}
+.money-blank.rur {
+	background: url(100rur.png) left top no-repeat;
+}
