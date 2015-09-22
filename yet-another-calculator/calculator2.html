@@ -3,8 +3,128 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Еще один калькулятор</title>
+	<style type="text/css">
+	.simple-calculator {
+		width: 600px;
+		border: 1px solid #000;
+		padding: 64px 32px;
+		box-sizing: border-box;
+	}
+	.simple-calculator label {
+		cursor:pointer;
+	}
+	.simple-calculator p {
+		padding-bottom: 32px;
+	}
+	.result {
+		text-align:center;
+	}
+	</style>
 </head>
 <body>
+	<div id="calculator" class="simple-calculator">
+		<p>
+			<span>Формат</span>
+			<label for="size15x20"><input type="radio" id="size15x20" name="sizes[]" value="15x20" checked>10x15</label>
+			<label for="size20x20"><input type="radio" id="size20x20" name="sizes[]" value="20x20">20x20</label>
+			<label for="size20x30"><input type="radio" id="size20x30" name="sizes[]" value="20x30">20x30</label>
+		</p>
+		<p>
+			<label for="razvorot">Количечтво разворотов</label><input type="text" id="razvorot" value="1">
+		</p>
+		<p>
+			<span>Скругление углов</span>
+			<input type="radio" id="rounds1" value="0" name="rounds[]" checked><label for="rounds1">Нет</label>
+			<input type="radio" id="rounds2" value="1" name="rounds[]"><label for="rounds2">Есть</label>
+		</p>
+		<div id="result" class="result">Стоимость 145 руб.</div>
+	</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script type="text/javascript">
+/* Calculator options */
+var options = {
+	id: "calculator",
+	currency: ' руб.',
+	beforePrice: 'Стоимость ',
+	maxRazvorotov: 3,
+	prices: {
+		'15x20': {
+			price: 145,// один разворот
+			rounds: 4, // скругление углов
+			two: 187, // 2 разворота
+			three: 229 //3 разворота
+		},
+		'20x20': {
+			price: 167,
+			rounds: 4,
+			two: 221,
+			three: 275
+		},
+		'20x30': {
+			price: 194,
+			rounds: 4,
+			two: 263,
+			three: 332
+		}
+	}
+};
+(function($){
+	/*
+	 * Simple calculator
+	 */
+	var Calculator = {
+		attachEvents: function(){
+			var options= this.options,
+				data   = false,
+				that   = this;
+			$(document).on("change input", "#" + options.id + " input", function(){
+				var rnds = $("#rounds1").is(':checked') ? false : true,
+					razvorotov =  1,
+					$razv = $("#razvorot"),
+					razvKey = 'price';
+				if($razv.val() > options.maxRazvorotov) {
+					$razv.val(options.maxRazvorotov)
+				} else if ($razv.val() < 1) {
+					$razv.val(1)
+				} else if(!$.isNumeric($razv.val())) {
+					$razv.val(1);
+				}
+				switch (parseInt($razv.val())) {
+					case 1:
+						razvKey = 'price';
+						break;
+					case 2:
+						razvKey = 'two';
+						break;
+					case 3:
+						razvKey = 'three';
+						break;
+				}
+				data = {
+					size      : $("#" + options.id + " input[type=radio]:checked").val(),
+					razvKey: razvKey,
+					rounds    : rnds
+				};
+				that.calculate(data);
+			})
+		},
+		calculate: function(data) {
+			var options= this.options;
+			var currentPrices = options.prices[data.size];
+			var result = currentPrices[data.razvKey];
+			result = data.rounds ? result + currentPrices.rounds : result;
+			result = data.lamination ? result + currentPrices.lamination : result;
+			$("#result").html(options.beforePrice + result + options.currency);
+		},
+		init: function(options) {
+			this.options = options;
+			this.attachEvents();
+		}
+	};
 	
+	Calculator.init(options);
+	
+})(jQuery)
+</script>
 </body>
 </html>
