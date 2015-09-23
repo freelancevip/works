@@ -14,32 +14,19 @@
 						$('#draw-contur').bind('click', this.drawContur);
 					},
 					drawContur : function(){
-						
-						// Создаем многоугольник без вершин.
 						var myPolygon = new ymaps.Polygon([], {}, {
-							// Курсор в режиме добавления новых вершин.
 							editorDrawingCursor: "crosshair",
-							// Максимально допустимое количество вершин.
 							editorMaxPoints: 5,
-							// Цвет заливки.
 							fillColor: '#00FF00',
-							// Цвет обводки.
 							strokeColor: '#0000FF',
-							// Ширина обводки.
 							strokeWidth: 5
 						});
-						// Добавляем многоугольник на карту.
 						myMap.geoObjects.add(myPolygon);
-
-						// В режиме добавления новых вершин меняем цвет обводки многоугольника.
 						var stateMonitor = new ymaps.Monitor(myPolygon.editor.state);
 						stateMonitor.add("drawing", function (newValue) {
 							myPolygon.options.set("strokeColor", newValue ? '#FF0000' : '#0000FF');
 						});
-
-						// Включаем режим редактирования с возможностью добавления новых вершин.
 						myPolygon.editor.startDrawing();
-						
 					}
 				}
 			);
@@ -129,7 +116,7 @@
 				
 			});
 			
-			var zoomControl = new ymaps.control.SmallZoomControl({
+			var zoomControl = new ymaps.control.ZoomControl({
 				layout: ZoomLayout
 			});
 			
