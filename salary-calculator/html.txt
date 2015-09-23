@@ -1,3 +1,44 @@
+<div id="salary-calculator" class="salary-calculator">
+	<div class="left-block">
+		<h3>Введите валюту:</h3>
+		<div class="currency-block">
+			<span data-currency="hrn" data-human-currency=" гривен" class="currency active">Гривны</span>
+			<span data-currency="rur" data-human-currency=" рублей" class="currency">Рубли</span>
+			<span data-currency="usd" data-human-currency=" долларов" class="currency">Доллары</span>
+		</div>
+		<h3>Введите период для расчета:</h3>
+		<div class="salary-field"><div id="period" class="period"></div></div>
+		<div class="range-period">
+			<span class="salary-field__period day">День</span>
+			<span class="salary-field__period week">Неделя</span>
+			<span class="salary-field__period month">Месяц</span>
+			<span class="salary-field__period year">Год</span>
+		</div>
+		<h3>Сколько часов вы готовы работать в день?</h3>
+		<div class="salary-field"><div id="hours" class="hours"></div></div>
+		<div class="range-period">
+			<div class="salary-field__period one_hour">1</div>
+			<div class="salary-field__period four_hours">4</div>
+			<div class="salary-field__period eight_hours">8</div>
+			<div class="salary-field__period twelve_hours">12</div>
+			<div class="salary-field__period sixteen_hours">16</div>
+			<div class="salary-field__period twenty_hours">20</div>
+			<div class="salary-field__period twenty-four_hours">24</div>
+		</div>
+		<div id="money-img" class="money-img">
+			<div class="money-blank hrn"></div>
+			<div class="money-blank rur" style="display:none;"></div>
+			<div class="money-blank usd" style="display:none;"></div>
+		</div>
+	</div>
+	<div class="right-block">
+		<h3>Вы затратите времени:</h3>
+		<div id="result-hours" class="result-hours">4 часа в день</div>
+		<h3>Ваш доход составит:</h3>
+		<div id="result-salary" class="result-salary">20 000 гривень в неделю</div>
+	</div>
+</div>
+  <style>
 * {margin:0;
 padding:0;}
 
@@ -15,6 +56,7 @@ padding:0;}
 	text-transform:uppercase;
 	font-size: 14px;
 	line-height: 42px;
+  	font-weight: bold;
 }
 
 .left-block {
@@ -52,7 +94,6 @@ span.ui-slider-handle {
 	margin-left: -7px!important;
 	cursor:pointer!important;
 	outline: none;
-	top: -7px!important;
 }
 
 .range-period {
@@ -196,3 +237,4 @@ span.ui-slider-handle {
 .money-blank.rur {
 	background: url(https://raw.githubusercontent.com/freelancevip/works/master/salary-calculator/100rur.png) left top no-repeat;
 }
+ </style>

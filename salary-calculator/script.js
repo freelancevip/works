@@ -1,3 +1,4 @@
+window.onload = function() {
 jQuery(document).ready(function(){
 	$(function() {
 	var options = {
@@ -11,7 +12,7 @@ jQuery(document).ready(function(){
 	var SalaryCalculator = {
 		currency:  $(".currency.active").data('currency'),
 		humanCurrency: $(".currency.active").data('humanCurrency'),
-		currencyImgSrc: "100hrn.png",
+		currencyImgSrc: "https://raw.githubusercontent.com/freelancevip/works/master/salary-calculator/100hrn.png",
 		perDayText: '',
 		currencyImgClass: 'money-blank hrn',
 		handleEvents: function() {
@@ -131,3 +132,4 @@ jQuery(document).ready(function(){
 	
 });
 })
+}
