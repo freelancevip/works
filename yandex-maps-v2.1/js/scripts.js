@@ -19,7 +19,10 @@
 				that.myMap.setCenter(res.geoObjects.get(0).geometry.getCoordinates());
 				var myPlacemark = new ymaps.Placemark(
 				  res.geoObjects.get(0).geometry.getCoordinates(),
-				  {},
+				  {
+						balloonContent: '<img width="180" src="http://img-fotki.yandex.ru/get/6114/82599242.2d6/0_88b97_ec425cf5_M" />',
+						iconContent: "Азербайджан"
+				  },
 				  {
 					preset: 'islands#nightCircleDotIcon',
 				  }
