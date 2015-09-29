@@ -1,0 +1,144 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<title>Еще один калькулятор</title>
+	<style type="text/css">
+	.simple-calculator {
+		width: 600px;
+		border: 1px solid #000;
+		padding: 64px 32px;
+		box-sizing: border-box;
+	}
+	.simple-calculator label {
+		cursor:pointer;
+	}
+	.simple-calculator p {
+		padding-bottom: 32px;
+	}
+	.result {
+		text-align:center;
+	}
+	</style>
+</head>
+<body>
+	<div id="calculator3" class="simple-calculator">
+		<p>
+			<span>Формат</span><br>
+			<label for="3size15x20"><input type="radio" id="3size15x20" name="sizes[]" value="15x20" checked>10x15</label><br>
+			<label for="3size20x20"><input type="radio" id="3size20x20" name="sizes[]" value="20x20">20x20</label><br>
+			<label for="3size20x30"><input type="radio" id="3size20x30" name="sizes[]" value="20x30">20x30</label><br>
+			<label for="3size25x35"><input type="radio" id="3size25x35" name="sizes[]" value="25x35">25x35</label><br>
+		</p>
+		<p>
+			<label for="razvorot3">Количечтво разворотов</label><input type="text" id="razvorot3" value="1">
+		</p>
+		<p>
+			<span>Утолщение страниц </span><br>
+			<input type="radio" id="rounds13" value="0" name="rounds[]" checked><label for="rounds13">без утолщения</label><br>
+			<input type="radio" id="rounds23" value="1" name="rounds[]"><label for="rounds23">1 мм</label><br>
+		</p>
+		<div id="result3" class="result">Стоимость 177 руб.</div>
+	</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script type="text/javascript">
+/* Calculator options */
+var options = {
+	id: "calculator3",
+	currency: ' руб.',
+	beforePrice: 'Стоимость ',
+	maxRazvorotov: 4,
+	prices: {
+		'15x20': {
+			one: 177,// один разворот
+			rounds: 20, // Утолщение страницы
+			two: 219, // 2 разворота
+			three: 261, //3 разворота
+			four: 303 //4 разворота
+		},
+		'20x20': {
+			one: 199,
+			rounds: 20,
+			two: 253,
+			three: 307,
+			four: 361
+		},
+		'20x30': {
+			one: 239,
+			rounds: 25,
+			two: 308,
+			three: 377,
+			four: 446
+		},
+		'25x35': {
+			one: 278,
+			rounds: 30,
+			two: 367,
+			three: 456,
+			four: 545
+		}
+	}
+};
+(function($){
+	/*
+	 * Simple calculator
+	 */
+	var Calculator = {
+		attachEvents: function(){
+			var options= this.options,
+				data   = false,
+				that   = this;
+			$(document).on("change input", "#" + options.id + " input", function(){
+				var rnds = $("#rounds13").is(':checked') ? false : true,
+					razvorotov =  1,
+					$razv = $("#razvorot3"),
+					razvKey = 'one';
+				if($razv.val() > options.maxRazvorotov) {
+					$razv.val(options.maxRazvorotov)
+				} else if ($razv.val() < 1) {
+					$razv.val(1)
+				} else if(!$.isNumeric($razv.val())) {
+					$razv.val(1);
+				}
+				switch (parseInt($razv.val())) {
+					case 1:
+						razvKey = 'one';
+						break;
+					case 2:
+						razvKey = 'two';
+						break;
+					case 3:
+						razvKey = 'three';
+						break;
+					case 4:
+						razvKey = 'four';
+						break;
+				}
+				data = {
+					size      : $("#" + options.id + " input[type=radio]:checked").val(),
+					razvKey   : razvKey,
+					rounds    : rnds,
+					razvCount : $razv.val()
+				};
+				that.calculate(data);
+			})
+		},
+		calculate: function(data) {
+			var options= this.options;
+			var currentPrices = options.prices[data.size];
+			var result = currentPrices[data.razvKey];
+			result = data.rounds ? result + currentPrices.rounds * data.razvCount : result;
+			$("#result3").html(options.beforePrice + result + options.currency);
+		},
+		init: function(options) {
+			this.options = options;
+			this.attachEvents();
+		}
+	};
+	
+	Calculator.init(options);
+	
+})(jQuery)
+</script>
+</body>
+</html>
