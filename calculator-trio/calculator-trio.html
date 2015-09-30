@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<title>Еще один калькулятор</title>
+	<style type="text/css">
+	.simple-calculator {
+		width: 600px;
+		border: 1px solid #000;
+		padding: 64px 32px;
+		box-sizing: border-box;
+	}
+	.simple-calculator label {
+		cursor:pointer;
+	}
+	.simple-calculator p {
+		padding-bottom: 32px;
+	}
+	.result {
+		text-align:center;
+	}
+	</style>
+</head>
+<body>
+	<div id="calculator5" class="simple-calculator">
+		<span>Планшет "Трио"</span><br>
+		<label for="5size15x20"><input type="radio" id="5size15x20" name="sizes[]" value="228" checked>15x20</label><br>
+		<label for="5size20x30"><input type="radio" id="5size20x30" name="sizes[]" value="299">20x30</label><br>
+		<input type="number" readonly value="1"/>
+		<div id="result5" class="result">Стоимость 228 руб.</div>
+	</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script type="text/javascript">
+(function($){
+	$(document).on("change input", "#calculator5 input", function(e){
+		$("#result5").text("Стоимость " + e.target.value + " руб.");
+	})
+})(jQuery)
+</script>
+</body>
+</html>
