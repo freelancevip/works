@@ -63,22 +63,22 @@ var options = {
 			razvorot: 42   //за каждый дополнительный разворот
 		},
 		'20x20': {
-			mm1     : 20,  // Стоимость 1мм утолщения страницы, за 1 разворот
-			mm2     : 30,  // Стоимость 2мм утолщения страницы, за 1 разворот
-			price   : 419, // цена за 5 разворотов
-			razvorot: 54   //за каждый дополнительный разворот
+			mm1     : 20,  
+			mm2     : 30,  
+			price   : 419, 
+			razvorot: 54   
 		},
 		'20x30': {
-			mm1     : 25,  // Стоимость 1мм утолщения страницы, за 1 разворот
-			mm2     : 40,  // Стоимость 2мм утолщения страницы, за 1 разворот
-			price   : 526, // цена за 5 разворотов
-			razvorot: 69   //за каждый дополнительный разворот
+			mm1     : 25, 
+			mm2     : 40, 
+			price   : 526,
+			razvorot: 69  
 		},
 		'25x25': {
-			mm1     : 30,  // Стоимость 1мм утолщения страницы, за 1 разворот
-			mm2     : 50,  // Стоимость 2мм утолщения страницы, за 1 разворот
-			price   : 597, // цена за 5 разворотов
-			razvorot: 89   //за каждый дополнительный разворот
+			mm1     : 30, 
+			mm2     : 50, 
+			price   : 597,
+			razvorot: 89  
 		}
 	}
 };
@@ -111,7 +111,6 @@ var options = {
 			var current = options.prices[data.size];
 			var thicknessCost = (typeof current[data.thickness] == 'undefined' ? 0 : current[data.thickness]);
 			var result = current.price + thicknessCost * parseInt(data.numRazvorotov) + current.razvorot * (data.numRazvorotov - options.minRazvorotov);
-			console.log(result)
 			$("#result4").html(options.beforePrice + result + options.currency);
 		},
 		init: function(options) {
@@ -119,9 +118,7 @@ var options = {
 			this.attachEvents();
 		}
 	};
-	
 	Calculator.init(options);
-	
 })(jQuery)
 </script>
 </body>
