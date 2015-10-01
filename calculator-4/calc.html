@@ -55,6 +55,7 @@ var options = {
 	currency: ' руб.',
 	beforePrice: 'Стоимость ',
 	minRazvorotov: 5,
+	maxRazvorotov: 30,
 	prices: {
 		'15x20': {
 			mm1     : 20,  // Стоимость 1мм утолщения страницы, за 1 разворот
@@ -99,6 +100,8 @@ var options = {
 			var $razv = $("#razvorot4");
 			if ($razv.val() < options.minRazvorotov) {
 				$razv.val(options.minRazvorotov)
+			} else if($razv.val() > options.maxRazvorotov) {
+				$razv.val(options.maxRazvorotov);
 			} else if(!$.isNumeric($razv.val())) {
 				$razv.val(options.minRazvorotov);
 			}
