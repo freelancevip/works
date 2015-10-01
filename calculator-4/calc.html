@@ -92,7 +92,7 @@ var options = {
 			var options= this.options,
 				data   = false,
 				that   = this;
-			$(document).on("change input", "#" + options.id + " input", function(e){
+			$(document).on("change", "#" + options.id + " input", function(e){
 				that.calculate();
 			})
 		},
