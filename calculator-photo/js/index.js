@@ -33,8 +33,8 @@ var options = {
 			$("#" + options.id + " input").on("change", function(){
 				data = {
 					size      : $("#" + options.id + " input[type=radio]:checked").val(),
-					lamination: $("#lamination").is(':checked'),
-					rounds    : $("#rounds").is(':checked')
+					lamination: $("#lamination_yes").is(':checked'),
+					rounds    : $("#rounds_yes").is(':checked')
 				};
 				that.calculate(data);
 			})

@@ -14,12 +14,20 @@
 			<label for="size20x30"><input type="radio" id="size20x30" name="sizes[]" value="20x30">20x30</label>
 		</p>
 		<p>
-			<label for="lamination">Ламинация обложки</label><input type="checkbox" id="lamination">
+			<span>Ламинация обложки</span><br>
+			<input type="radio" name="lamination" id="lamination_yes">
+			<label for="lamination_yes">Да</label><br>
+			<input type="radio" name="lamination" id="lamination_no" checked>
+			<label for="lamination_no">Нет</label><br>
 		</p>
 		<p>
-			<label for="rounds">Скругление углов</label><input type="checkbox" id="rounds">
+			<span>Скругление углов</span><br>
+			<input type="radio" name="rounds" id="rounds_yes">
+			<label for="rounds_yes">Да</label><br>
+			<input type="radio" name="rounds" id="rounds_no" checked>
+			<label for="rounds_no">Нет</label>
 		</p>
-		<div id="result" class="result"></div>
+		<div id="result" class="result">Стоимость 99 руб.</div>
 	</div>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	<script type="text/javascript" src="./js/index.js"></script>
