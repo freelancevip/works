@@ -30,7 +30,7 @@ var options = {
 			var options= this.options;
 			var data   = false;
 			var that   = this;
-			$("#" + options.id + " input").on("change", function(){
+			$(document).on("change input", "#" + options.id + " input", function(){
 				data = {
 					size      : $("#" + options.id + " input[type=radio]:checked").val(),
 					lamination: $("#lamination_yes").is(':checked'),
