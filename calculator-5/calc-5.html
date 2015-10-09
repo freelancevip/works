@@ -39,14 +39,14 @@
 		</p>
 		<p>
 			<span>Утолщение</span><br>
-			<input class="thickness" type="radio" data-calc-role="thickness" id="rounds15" value="0" name="rounds5[]" disabled checked><label for="rounds15">без утолщения</label>
-			<input class="thickness" type="radio" data-calc-role="thickness" id="rounds25" value="1" name="rounds5[]" disabled><label for="rounds25">Утолщение страниц 1мм</label>
-			<input class="thickness" type="radio" data-calc-role="thickness" id="rounds35" value="2" name="rounds5[]" disabled><label for="rounds35">Утолщение страниц 2мм</label>
+			<input class="thickness" type="radio" data-calc-role="thickness" id="rounds15" value="0" name="rounds5[]" checked><label for="rounds15">без утолщения</label>
+			<input class="thickness" type="radio" data-calc-role="thickness" id="rounds25" value="1" name="rounds5[]"><label for="rounds25">Утолщение страниц 1мм</label>
+			<input class="thickness" type="radio" data-calc-role="thickness" id="rounds35" value="2" name="rounds5[]"><label for="rounds35">Утолщение страниц 2мм</label>
 		</p>
 		<p>
 			<span>Бумага</span><br>
-			<input class="paper" type="radio" data-calc-role="paper" id="paper15" value="" name="paper5[]" checked><label for="paper15">Фотобумага матовая</label>
-			<input class="paper" type="radio" data-calc-role="paper" id="paper25" value="Silk" name="paper5[]"><label for="paper25">Фотобумага Silk</label>
+			<input class="paper" type="radio" data-calc-role="paper" id="paper15" value="" name="paper5[]" disabled checked><label for="paper15">Фотобумага матовая</label>
+			<input class="paper" type="radio" data-calc-role="paper" id="paper25" value="Silk" name="paper5[]" disabled><label for="paper25">Фотобумага Silk</label>
 		</p>
 		<p>
 			<span>Форзац</span><br>
@@ -182,9 +182,9 @@ var options = {
 		var format = $cWrap.find("input[data-calc-role=format]:checked").val();
 		var numRazv = parseInt($("#razvorot5").val());
 		if(options[format].razvCost0mmSilk == false)
-			$cWrap.find("input[data-calc-role=thickness]").attr("disabled", true);
+			$cWrap.find("input[data-calc-role=paper]").attr("disabled", true);
 		else
-			$cWrap.find("input[data-calc-role=thickness]").attr("disabled", false);
+			$cWrap.find("input[data-calc-role=paper]").attr("disabled", false);
 		if(numRazv < options.minRazvorotov || !$.isNumeric(numRazv))
 			$("#razvorot5").val(options.minRazvorotov);
 		else if (numRazv > options.maxRazvorotov)
