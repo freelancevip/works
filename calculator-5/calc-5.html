@@ -177,7 +177,8 @@ var options = {
 		};
 	};
 	var calc = new Calculator(options);
-	$(document).on("change", "#calculator5 input", function(e){
+	$(document).on("change input", "#calculator5 input", function(e){
+		var validation = {};
 		var $cWrap = $("#calculator5");
 		var format = $cWrap.find("input[data-calc-role=format]:checked").val();
 		var numRazv = parseInt($("#razvorot5").val());
@@ -185,10 +186,12 @@ var options = {
 			$cWrap.find("input[data-calc-role=paper]").attr("disabled", true);
 		else
 			$cWrap.find("input[data-calc-role=paper]").attr("disabled", false);
-		if(numRazv < options.minRazvorotov || !$.isNumeric(numRazv))
-			$("#razvorot5").val(options.minRazvorotov);
-		else if (numRazv > options.maxRazvorotov)
+		if(numRazv < options.minRazvorotov || !$.isNumeric(numRazv)) {
+			validation.status = false;
+			validation.text = "Минимальное количесво разворотов 10";
+		} else if (numRazv > options.maxRazvorotov) {
 			$("#razvorot5").val(options.maxRazvorotov);
+		}
 			
 		var thickness = $cWrap.find("input[data-calc-role=thickness]:checked").val();
 		var paper = $cWrap.find("input[data-calc-role=paper]:checked").val();
@@ -196,6 +199,9 @@ var options = {
 		var price = calc.calc(format, numRazv, thickness, paper, forsaz);
 		calc.inputData = {format:format, numRazv:numRazv, thickness:thickness, paper:paper, forsaz:forsaz, oblCost:calc.getOblCost(format), price:price};
 		var str = options.beforePrice + price + options.afterPrice;
+		if(validation.status == false)
+			str = validation.text;
+		
 		$("#result5").text(str);
 	})
 })(jQuery)
