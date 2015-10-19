@@ -1,0 +1,241 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<title>Еще один калькулятор</title>
+	<style type="text/css">
+	.simple-calculator {
+		width: 600px;
+		border: 1px solid #000;
+		padding: 64px 32px;
+		box-sizing: border-box;
+	}
+	.simple-calculator label {
+		cursor:pointer;
+	}
+	.simple-calculator p {
+		padding-bottom: 32px;
+	}
+	.result {
+		text-align:center;
+	}
+	</style>
+</head>
+<body>
+	<div id="calculator6" class="simple-calculator">
+		<p>
+			<span>Формат</span><br>
+			<label for="6size10x10"><input data-calc-role="format" type="radio" id="6size10x10" name="szs6[]" value="10x10" checked>10x10</label>
+			<label for="6size15x15"><input data-calc-role="format" type="radio" id="6size15x15" name="szs6[]" value="15x15">15x15</label>
+			<label for="6size15x20"><input data-calc-role="format" type="radio" id="6size15x20" name="szs6[]" value="15x20">15x20</label>
+			<label for="6size20x20"><input data-calc-role="format" type="radio" id="6size20x20" name="szs6[]" value="20x20">20x20</label>
+			<label for="6size20x30"><input data-calc-role="format" type="radio" id="6size20x30" name="szs6[]" value="20x30">20x30</label>
+			<label for="6size25x25"><input data-calc-role="format" type="radio" id="6size25x25" name="szs6[]" value="25x25">25x25</label>
+			<label for="6size30x30"><input data-calc-role="format" type="radio" id="6size30x30" name="szs6[]" value="30x30">30x30</label>
+			<label for="6size30x40"><input data-calc-role="format" type="radio" id="6size30x40" name="szs6[]" value="30x40">30x40</label>
+		</p>
+		<p>
+			<label for="razvorot6">Количечтво разворотов (от 10 до 45)</label><input type="text" id="razvorot6" value="10">
+		</p>
+		<p>
+			<span>Утолщение</span><br>
+			<input class="thickness" type="radio" data-calc-role="thickness" id="rounds16" value="0" name="rounds6[]" checked><label for="rounds16">без утолщения</label>
+			<input class="thickness" type="radio" data-calc-role="thickness" id="rounds26" value="1" name="rounds6[]"><label for="rounds26">Утолщение страниц 1мм</label>
+			<input class="thickness" type="radio" data-calc-role="thickness" id="rounds36" value="2" name="rounds6[]"><label for="rounds36">Утолщение страниц 2мм</label>
+		</p>
+		<p>
+			<span>Бумага</span><br>
+			<input class="paper" type="radio" data-calc-role="paper" id="paper15" value="" name="paper6[]" disabled checked><label for="paper15">Фотобумага матовая</label>
+			<input class="paper" type="radio" data-calc-role="paper" id="paper25" value="Silk" name="paper6[]" disabled><label for="paper25">Фотобумага Silk</label>
+		</p>
+		<p>
+			<span>Форзац</span><br>
+			<input class="forsaz" data-calc-role="forsaz" type="radio" id="forsaz16" value="0" name="forsaz6[]" checked><label for="forsaz16">Нет</label>
+			<input class="forsaz" data-calc-role="forsaz" type="radio" id="forsaz26" value="1" name="forsaz6[]"><label for="forsaz26">Есть</label>
+		</p>
+		<p>
+			<span>Кожаный ремешок</span><br>
+			<input class="leather-belt" data-calc-role="belt" type="radio" id="belt16" value="1" name="belt6[]"><label for="belt16">Да</label>
+			<input class="leather-belt" data-calc-role="belt" type="radio" id="belt26" value="0" name="belt6[]" checked><label for="belt26">Нет</label>
+		</p>
+		<p>
+			<span>Вид кожаного ремешока</span><br>
+			<input class="leather-belt-type" data-calc-role="belt-type" type="radio" id="belttype16" value="round" name="belttype6[]" checked disabled><label for="belttype16">Круглый</label>
+			<input class="leather-belt-type" data-calc-role="belt-type" type="radio" id="belttype26" value="square" name="belttype6[]" disabled><label for="belttype26">Квадратный</label>
+		</p>
+		<div id="result6" class="result">Стоимость 697 руб.</div>
+	</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script type="text/javascript">
+(function($){
+	/* Calculator options */
+	var options = {
+		minRazvorotov: 10,
+		maxRazvorotov: 45,
+		beforePrice: 'Стоимость ',
+		afterPrice: ' руб.',
+		leatherBelt: {
+			common: 350,  // Кожаный ремешок
+			round : 0,   // Кожаный ремешок, + за круглый, за место нуля поставитть 40 руб и 55 руб
+			square: 0    // Кожаный ремешок, + за квадратный, за место нуля поставитть 40 руб и 55 руб
+		},
+		'10x10': {
+			start: 697,
+			razvCost0mm: 32,
+			razvCost0mmSilk: false,
+			razvCost1mm: 47,
+			razvCost1mmSilk: false,
+			razvCost2mm: 65,
+			razvCost2mmSilk: false,
+			forsaz: 215
+		},
+		'15x15': {
+			start: 890,
+			razvCost0mm: 41,
+			razvCost0mmSilk: false,
+			razvCost1mm: 59,
+			razvCost1mmSilk: false,
+			razvCost2mm: 79,
+			razvCost2mmSilk: false,
+			forsaz: 285
+		},
+		'15x20': {
+			start: 1100,
+			razvCost0mm: 58,
+			razvCost0mmSilk: false,
+			razvCost1mm: 78,
+			razvCost1mmSilk: false,
+			razvCost2mm: 98,
+			razvCost2mmSilk: false,
+			forsaz: 340
+		},
+		'20x20' : {
+			start: 1399,
+			razvCost0mm: 89,
+			razvCost0mmSilk: 111,
+			razvCost1mm: 99,
+			razvCost1mmSilk: 139,
+			razvCost2mm: 129,
+			razvCost2mmSilk: 159,
+			forsaz: 400
+		},
+		'20x30' : {
+			start: 1898,
+			razvCost0mm: 111,
+			razvCost0mmSilk: 139,
+			razvCost1mm: 139,
+			razvCost1mmSilk: 169,
+			razvCost2mm: 159,
+			razvCost2mmSilk: 189,
+			forsaz: 500
+		},
+		'25x25' : {
+			start: 1958,
+			razvCost0mm: 139,
+			razvCost0mmSilk: 179,
+			razvCost1mm: 156,
+			razvCost1mmSilk: 193,
+			razvCost2mm: 179,
+			razvCost2mmSilk: 224,
+			forsaz: 600
+		},
+		'30x30' : {
+			start: 2988,
+			razvCost0mm: 179,
+			razvCost0mmSilk: 259,
+			razvCost1mm: 199,
+			razvCost1mmSilk: 269,
+			razvCost2mm: 229,
+			razvCost2mmSilk: 289,
+			forsaz: 850
+		},
+		'30x40' : {
+			start: 3467,
+			razvCost0mm: 259,
+			razvCost0mmSilk: 299,
+			razvCost1mm: 284,
+			razvCost1mmSilk: 333,
+			razvCost2mm: 299,
+			razvCost2mmSilk: 354,
+			forsaz: 1000
+		}
+	};
+	/*
+	 * Simple calculator
+	 */
+	var Calculator = function (options) {
+		this.inputData = {};
+		this.options = options;
+		// @return Int price
+		this.calc = function (format, numRazv, thickness, paper, forsaz, leatherBelt, leatherBeltType) {
+			// format 15x20
+			// numRazv from 10 to 45
+			// thickness 0||1||2
+			// paper ''||Silk
+			// forsaz boolean
+			// leatherBelt boolean
+			// leatherBeltType 'square' || 'round'
+			var result = 0;
+			var options = this.options;
+			var oblCost = this.getOblCost(format);
+			var currentPriceKey = 'razvCost' + thickness + 'mm' + paper;
+			result = options[format][currentPriceKey] * numRazv + this.getOblCost(format);
+			if(forsaz == true) {
+				result += options[format].forsaz;
+			}
+			if(leatherBelt && leatherBeltType) {
+				result += options.leatherBelt.common + options.leatherBelt[leatherBeltType];
+			}
+			return result;
+		};
+		this.output = function(price) {
+			
+		};
+		this.getOblCost = function(format) {
+			var options = this.options;
+			return options[format].start - options[format].razvCost0mm * options.minRazvorotov; // Стоимость обложки
+		};
+	};
+	var calc = new Calculator(options);
+	$(document).on("change input", "#calculator6 input", function(e){
+		var validation = {};
+		var $cWrap = $("#calculator6");
+		var format = $cWrap.find("input[data-calc-role=format]:checked").val();
+		var numRazv = parseInt($("#razvorot6").val());
+		var leatherBelt = $cWrap.find("input[data-calc-role=belt]:checked").val();
+		var leatherBeltType = "";
+		if(leatherBelt == 1) {
+			$cWrap.find("input[data-calc-role=belt-type]").removeAttr("disabled");
+			leatherBeltType = $cWrap.find("input[data-calc-role=belt-type]:checked").val();
+		} else {
+			$cWrap.find("input[data-calc-role=belt-type]").attr("disabled", "disabled");
+		}
+		
+		if(options[format].razvCost0mmSilk == false)
+			$cWrap.find("input[data-calc-role=paper]").attr("disabled", true);
+		else
+			$cWrap.find("input[data-calc-role=paper]").attr("disabled", false);
+		if(numRazv < options.minRazvorotov || !$.isNumeric(numRazv)) {
+			validation.status = false;
+			validation.text = "Минимальное количесво разворотов 10";
+		} else if (numRazv > options.maxRazvorotov) {
+			$("#razvorot6").val(options.maxRazvorotov);
+		}
+			
+		var thickness = $cWrap.find("input[data-calc-role=thickness]:checked").val();
+		var paper = $cWrap.find("input[data-calc-role=paper]:checked").val();
+		var forsaz = $cWrap.find("input[data-calc-role=forsaz]:checked").val();
+		
+		var price = calc.calc(format, numRazv, thickness, paper, forsaz, leatherBelt, leatherBeltType);
+		
+		calc.inputData = {format:format, numRazv:numRazv, thickness:thickness, paper:paper, forsaz:forsaz, oblCost:calc.getOblCost(format), price:price};
+		var str = options.beforePrice + price + options.afterPrice;
+		if(validation.status == false)
+			str = validation.text;
+		
+		$("#result6").text(str);
+	})
+})(jQuery)
+</script>
+</body>
+</html>
