@@ -54,14 +54,9 @@
 			<input class="forsaz" data-calc-role="forsaz" type="radio" id="forsaz27" value="1" name="forsaz7[]"><label for="forsaz27">Есть</label>
 		</p>
 		<p>
-			<span>Кожаный ремешок</span><br>
-			<input class="leather-belt" data-calc-role="belt" type="radio" id="belt17" value="1" name="belt7[]"><label for="belt17">Да</label>
-			<input class="leather-belt" data-calc-role="belt" type="radio" id="belt27" value="0" name="belt7[]" checked><label for="belt27">Нет</label>
-		</p>
-		<p>
-			<span>Вид кожаного ремешока</span><br>
-			<input class="leather-belt-type" data-calc-role="belt-type" type="radio" id="belttype17" value="round" name="belttype7[]" checked disabled><label for="belttype17">Круглый</label>
-			<input class="leather-belt-type" data-calc-role="belt-type" type="radio" id="belttype27" value="square" name="belttype7[]" disabled><label for="belttype27">Квадратный</label>
+			<span>Вид корешка</span><br>
+			<input class="leather-belt-type" data-calc-role="belt-type" type="radio" id="belttype17" value="round" name="belttype7[]" checked><label for="belttype17">Круглый</label>
+			<input class="leather-belt-type" data-calc-role="belt-type" type="radio" id="belttype27" value="square" name="belttype7[]"><label for="belttype27">Квадратный</label>
 		</p>
 		<p>
 			<span>Окна под фото в обложке (0 до 4)</span>
@@ -105,9 +100,8 @@
 		beforePrice: 'Стоимость ',
 		afterPrice: ' руб.',
 		leatherBelt: {
-			common: 350,  // Кожаный ремешок
-			round : 0,    // Кожаный ремешок, + за круглый, за место нуля поставитть 40 руб и 55 руб
-			square: 0     // Кожаный ремешок, + за квадратный, за место нуля поставитть 40 руб и 55 руб
+			round : 0,    // Кожаный корешок, + за круглый, за место нуля поставитть 40 руб и 55 руб
+			square: 0     // Кожаный корешок, + за квадратный, за место нуля поставитть 40 руб и 55 руб
 		},
 		window: 200,      // Окна под фото в обложке (0 до 4), стоимость одного
 		maxWindow: 4,     // Макс. кол-во окон под фото
@@ -228,7 +222,7 @@
 				result += options[format].forsaz;
 			}
 			if(leatherBelt && leatherBeltType) {
-				result += options.leatherBelt.common + options.leatherBelt[leatherBeltType];
+				result += options.leatherBelt[leatherBeltType];
 			}
 			result += options.window * window;
 			if(bint) {
@@ -259,13 +253,11 @@
 		var $cWrap = $("#calculator7");
 		var format = $cWrap.find("input[data-calc-role=format]:checked").val();
 		var numRazv = parseInt($("#razvorot7").val());
-		var leatherBelt = $cWrap.find("input[data-calc-role=belt]:checked").val();
+		var leatherBelt = 1;
 		var leatherBeltType = "";
+		
 		if(leatherBelt == 1) {
-			$cWrap.find("input[data-calc-role=belt-type]").removeAttr("disabled");
 			leatherBeltType = $cWrap.find("input[data-calc-role=belt-type]:checked").val();
-		} else {
-			$cWrap.find("input[data-calc-role=belt-type]").attr("disabled", "disabled");
 		}
 		
 		if(options[format].razvCost0mmSilk == false)
