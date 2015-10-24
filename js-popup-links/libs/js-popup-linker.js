@@ -13,9 +13,11 @@
 	/* Main class */
 	var JS_Popup_Linker = ( function( window, undefined ) {
 
+		$("body").remove("#JS_Popup_Linker");
+		var hidDiv = $("<div id='JS_Popup_Linker'></div>").appendTo($("body")).hide();
+
 		function MyModule(options) {
 			
-			var hidDiv = $("<div id='JS_Popup_Linker'></div>").appendTo($("body")).hide();
 			
 			this.init = function init() {
 				this.attachEvents();
