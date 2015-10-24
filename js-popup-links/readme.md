@@ -7,7 +7,7 @@ date-link="file_name-st-N"
 Установка:<br>
 1. Загрузить папку libs на один уровень с нужными файлами<br>
 2. Добавить такие строки к странице со ссылками
-```javascript
+```html
 <script src="//code.jquery.com/jquery-latest.js"></script>
 <!-- Подключение popup featherlight -->
 <link href="//cdn.rawgit.com/noelboss/featherlight/1.3.4/release/featherlight.min.css" type="text/css" rel="stylesheet" />
