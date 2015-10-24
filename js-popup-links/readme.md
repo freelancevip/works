@@ -5,7 +5,8 @@ date-link="file_name-st-N"
 </code>
 При клике на такие элементы открывает попап, в который подгружает содержимое div id="file_name-st-N" из файла file_name.php<br>
 Установка:<br>
-Добавить такие строки к странице со ссылками
+1. Загрузить папку libs на один уровень с нужными файлами<br>
+2. Добавить такие строки к странице со ссылками
 ```
 <script src="//code.jquery.com/jquery-latest.js"></script>
 <!-- Подключение popup featherlight -->
@@ -14,7 +15,7 @@ date-link="file_name-st-N"
 <!-- / Подключение popup featherlight -->
 <script type="text/javascript" src="./libs/js-popup-linker.js"></script>
 ```
-Настройка:<br>
+3. Настройка:<br>
 Открыть файл libs/js-popup-linker.js
 ```
 /* Настройки */
