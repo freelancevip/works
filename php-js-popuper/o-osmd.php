@@ -83,7 +83,7 @@
 
 
 	
-	<script src="//code.jquery.com/jquery-latest.js"></script>
+	<script src="./libs/jquery-latest.js"></script>
 	
 	<!-- Подключение popup featherlight -->
 	<link href="./libs/featherlight.min.css" type="text/css" rel="stylesheet" />

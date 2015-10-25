@@ -1,0 +1,12 @@
+{
+    "name": "freelancevip/php-js-popuper",
+    "require": {
+        "simple-html-dom/simple-html-dom": "^1.5"
+    },
+    "authors": [
+        {
+            "name": "freelancevip",
+            "email": "freelancevip@yandex.ru"
+        }
+    ]
+}
