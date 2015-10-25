@@ -8,9 +8,8 @@
 		
 	4. В файл с ссылками на статьи в самый конец перед
 		
-		&lt;/body&gt;
+		</body>
 		
-		```
 		добавить подключение скрипта и стилей:
 		
 		<link href="./libs/featherlight.min.css" type="text/css" rel="stylesheet" />
