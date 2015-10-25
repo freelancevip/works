@@ -1,6 +1,5 @@
 <?php
-$url = "http://test.freelancevip.pro"; // Адрес вашего сайта
-//var_dump($_SERVER);
+$url = 'http://'.$_SERVER['SERVER_NAME'];
 
 if(isset($_GET['mode']) && $_GET['mode'] == 'one_article') {
 	$current_url = explode("?", $_SERVER['REQUEST_URI']);

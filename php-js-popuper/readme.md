@@ -4,17 +4,9 @@
 	2. Скопировать файл php_processor.php на один уровень с файлами данных
 	3. В файл со статьями добавить строку, в самое начало:
 		```html
-		<?php 
-		require_once './php_processor.php'; 
-		?>
+		<?php require_once './php_processor.php'; ?>
 		```
-	
-	4. Открыть файл php_processor.php и вписать url сайта, например
-		```php
-		$url = "http://test.freelancevip.pro"; // Адрес вашего сайта
-		```
-	
-	5. В файл с ссылками на статьи в самый конец перед
+	4. В файл с ссылками на статьи в самый конец перед
 		```html
 		</body>
 		```
