@@ -25,17 +25,21 @@
 					e.preventDefault();
 					var elemId   = $(this).attr(options.tag);
 					var url      = $.trim(elemId.replace(/-st-.*/, '') + '.php');
-					$.get(
-						url, {
-							mode : 'one_article',
-							articleId : elemId
-						}, function(response) {
-							$.featherlight($(response), {
-								afterContent: function() {
-									$(".featherlight-content").css("max-width", options.maxWidth);
-									$(".featherlight-content").css("max-height", options.maxHeight);
-								}
-							});
+					var reqData = {
+						mode : 'one_article',
+						articleId : elemId
+					};
+					$.get( url, reqData, function(response) {
+						var $content = $(options.notFoundText);
+						if(response != '') {
+							$content = $(response);
+						}
+						$.featherlight($content, {
+							afterContent: function() {
+								$(".featherlight-content").css("max-width", options.maxWidth);
+								$(".featherlight-content").css("max-height", options.maxHeight);
+							}
+						});
 						}
 					);
 					

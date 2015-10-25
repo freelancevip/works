@@ -1,4 +1,4 @@
-
+<?php require_once './php_processor.php'; ?>
 <h1>СТАТТЯ 1. ПРАВО НА ЗВЕРНЕННЯ ДО ГОСПОДАРСЬКОГО СУДУ</h1>
 
 <div id="zu-hpk-st-1">
