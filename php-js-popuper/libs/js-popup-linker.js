@@ -1,61 +1,92 @@
-(function($) {
+window.onload = function() {
+	function getXmlHttp(){
+		var xmlhttp;
+		try {
+			xmlhttp = new ActiveXObject("Msxml2.XMLHTTP");
+		} catch (e) {
+			try {
+				xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+			} catch (E) {
+				xmlhttp = false;
+			}
+		}
+		if (!xmlhttp && typeof XMLHttpRequest!='undefined') {
+			xmlhttp = new XMLHttpRequest();
+		}
+		return xmlhttp;
+	}
 	
-	/* Настройки */
-	var options = {
-		selector : '.open-law',
-		tag      : 'date-link',
-		action   : 'click',
-		maxWidth : '600px',
-		maxHeight: '400px',
-		notFoundText : '<h3>Информация не найдена!</h3>'
-	};
+	/* Popup */
+	function makePopup() {
+		//overlay
+		var overlay = document.createElement("div");
+		overlay.setAttribute("id", 'overlay');
+		overlay.setAttribute("class", 'overlay hidden');
+		document.body.appendChild(overlay); 
+		// popup
+		var popup = document.createElement("div");
+		popup.setAttribute("id", 'popup');
+		popup.setAttribute("class", 'popup hidden');
+		document.body.appendChild(popup);
+		// popup-inner (relative)
+		var popupInner = document.createElement("div");
+		popupInner.setAttribute("id", 'popup-inner');
+		popupInner.setAttribute("class", 'popup-inner');
+		document.getElementById("popup").appendChild(popupInner);
+	}
 	
-	/* Main class */
-	var JS_Popup_Linker = ( function( window ) {
-		
-		function MyModule(options) {
+	function showPopup(content) {
+		document.getElementById("overlay").className = "overlay";
+		document.getElementById("popup").className = "popup";
+		document.getElementById("popup-inner").innerHTML = content;
+	}
+	
+	function closePopup () {
+		document.getElementById("overlay").className = "overlay hidden";
+		document.getElementById("popup").className = "popup hidden";
+		document.getElementById("popup-inner").innerHTML = '';
+	}
+
+	/* Send reques */
+	function getArticle() {
+		var elemId = this.getAttribute("date-link");
+        var url = elemId.replace(/-st-.*/, '') + '.php?mode=one_article&articleId='+ elemId;
+		url = url.trim();
+
+		var req = getXmlHttp();
+		req.onreadystatechange = function() {
 			
-			
-			this.init = function init() {
-				this.attachEvents();
-			};
-			
-			this.attachEvents = function attachEvents() {
-				$(options.selector).on(options.action, function(e) {
-					e.preventDefault();
-					var elemId   = $(this).attr(options.tag);
-					var url      = $.trim(elemId.replace(/-st-.*/, '') + '.php');
-					var reqData = {
-						mode : 'one_article',
-						articleId : elemId
-					};
-					$.get( url, reqData, function(response) {
-						var $content = $(options.notFoundText);
-						if(response != '') {
-							$content = $(response);
-						}
-						$.featherlight($content, {
-							afterContent: function() {
-								$(".featherlight-content").css("max-width", options.maxWidth);
-								$(".featherlight-content").css("max-height", options.maxHeight);
-							}
-						});
-						}
-					);
-					
-					return false;
-				})
-			};
-			
-			this.init();
-			
+			if (req.readyState == 4) {
+				
+				if(req.status == 200) {
+					showPopup(req.responseText);
+				}
+			}
+
 		}
 
-		return MyModule;
+		req.open('GET', url, true);
 
-	} )( window );
+		req.send(null);
+		
+	}
 	
-	/* Use it */
-	var jpl = new JS_Popup_Linker(options);
+	function attachEventsToLinks() {
+		
+		var links = document.getElementsByClassName("open-law");
+
+		for(var i=0;i<links.length;i++){
+			links[i].addEventListener('click', getArticle, false);
+		}
+	}
 	
-})(jQuery)
+	function attachEventToClosePopup() {
+		document.getElementById("overlay").addEventListener('click', closePopup, false);
+	}
+	
+	makePopup();
+	attachEventsToLinks();
+	attachEventToClosePopup();
+
+
+}

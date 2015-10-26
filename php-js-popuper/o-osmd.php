@@ -8,7 +8,7 @@
 <body>
 
 <h1>Закон України Про об'єднання співвласників багатоквар</h1>
-<p><span date-link="zu-osmd-st-1" class="open-law">ст. 1</span></p>
+<p><span date-link="zu-osmd-st-1badlink" class="open-law">ст. 1</span></p>
 <p><span date-link="zu-osmd-st-2" class="open-law">ст. 2</span></p>
 <p><span date-link="zu-osmd-st-3" class="open-law">ст. 3</span></p>
 <p><span date-link="zu-osmd-st-4" class="open-law">ст. 4</span></p>
@@ -81,15 +81,8 @@
 <p><span date-link="zu-osmd-st-29" class="open-law">ст. 29</span></p>
 <p><span date-link="zu-osmd-st-30" class="open-law">ст. 30</span></p>
 
-
 	
-	<script src="./libs/jquery-latest.js"></script>
-	
-	<!-- Подключение popup featherlight -->
-	<link href="./libs/featherlight.min.css" type="text/css" rel="stylesheet" />
-	<script src="./libs/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
-	<!-- / Подключение popup featherlight -->
-	
+	<link rel="stylesheet" href="./libs/popup.css">
 	<script type="text/javascript" src="./libs/js-popup-linker.js"></script>
 	
 	
