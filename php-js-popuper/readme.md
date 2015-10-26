@@ -12,11 +12,7 @@
 		
 		добавить подключение скрипта и стилей:
 		
-		<link href="./libs/featherlight.min.css" type="text/css" rel="stylesheet" />
-		<script src="./libs/jquery-latest.js"></script>
-		<script src="./libs/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+		<link rel="stylesheet" href="./libs/popup.css">
 		<script type="text/javascript" src="./libs/js-popup-linker.js"></script>
-		
 	
 	Это все!
-
